@@ -4,5 +4,4 @@ development:
 
 test:
   adapter: postgresql
-  database:band_tracker_test
-  
+  database: band_tracker_test
