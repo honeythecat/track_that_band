@@ -25,4 +25,10 @@ post('/bands/:id') do
   redirect "/bands/#{band_id}"
 end
 
-#<a href="/bands/<%= band.id %>"<%= band.band_name %></a>
+patch('/bands/:id') do
+  band_name = params["band_name"]
+  @band = Band.find(params["id"].to_i)
+  @band.update({ band_name: band_name})
+  band_id = @band.id()
+  redirect "/bands/#{band_id}"
+end

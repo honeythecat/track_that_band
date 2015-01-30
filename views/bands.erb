@@ -1,3 +1,22 @@
 <h3>Update "<%= @band.band_name() %>"</h3>
 
+<hr>
+
+<h5>Change the name of your band here:</h5>
+
+<form action="/bands/<%= @band.id %>" method="post">
+  <input name="_method" type="hidden" value="patch">
+
+  <label for="band_name"></label>
+  <input id="band_name" name="band_name" type="text" class="form-line" value="" placeholder="ex. Traveling Wilburys">
+
+  <button type="submit">Change</button>
+</form>
+
+<hr>
+
+
+
+
+
 <a href="/">Return to Track that Band!</a>
