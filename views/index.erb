@@ -6,16 +6,19 @@
 
 <hr>
 
-<% if @bands.any?() %>
-  <ul>
-    <% @bands.each() do |band| %>
-      <li><%= band.band_name() %></li>
-    <% end %>
-    <ul>
+<p>Click on a band name to edit that band.</p>
 
-<% else %>
+<ul>
+  <% if @bands.any? %>
+    <% @bands.each do |band| %>
+      <li>
+        <a href="/bands/<%= band.id %>"><%= band.band_name() %></a>
+      </li>
+    <% end %>
+  <% else %>
   <p>No bands are currently trackable.</p>
-<% end %>
+  <% end %>
+</ul>
 
 <hr>
 
