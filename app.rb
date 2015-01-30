@@ -32,3 +32,9 @@ patch('/bands/:id') do
   band_id = @band.id()
   redirect "/bands/#{band_id}"
 end
+
+delete('/bands/:id?') do
+  @band = Band.find(params["id"])
+  @band.destroy()
+  redirect '/'
+end
