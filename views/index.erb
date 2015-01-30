@@ -1,0 +1,29 @@
+<h1>Track that Band!</h1>
+
+<hr>
+
+<h4>These are the bands currently trackable:</h4>
+
+<hr>
+
+<% if @bands.any?() %>
+  <ul>
+    <% @bands.each() do |band| %>
+      <li><%= band.band_name() %></li>
+    <% end %>
+    <ul>
+
+<% else %>
+  <p>No bands are currently trackable.</p>
+<% end %>
+
+<hr>
+
+<h4>Add a band to track:</h4>
+
+<form action="/bands" method="post" class="form-entry">
+  <label for="band_name"></label>
+  <input id="band_name" name="band_name" class="form-line" type="text" placeholder="ex: Bonzo Dog Doo-Dah Band">
+
+  <button type="submit">Submit</button>
+</form>
