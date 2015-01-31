@@ -19,7 +19,9 @@
 
 <h4>Add a venue here:</h4>
 
-<form action="/bands/:id" method="post">
+<form action="/bands/<%= @band.id %>" method="post">
+
+
   <label for="venue_name"></label>
   <input id="venue_name" name="venue_name" type="text" class="form-line" value="" placeholder="ex. The Rabbit Hole">
 

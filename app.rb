@@ -23,8 +23,17 @@ end
 post('/bands/:id') do
   band = Band.find(params["id"].to_i)
   band_id = band.id()
+  venue_name = params["venue_name"]
+  venue = Venue.create({ venue_name: venue_name })
+  band.update({ venue_ids: [venue.id()]})
   redirect "/bands/#{band_id}"
 end
+
+# post('/bands/:id') do
+#   venue_name = params["venue_name"]
+#   venue = Venue.create({ venue_name: venue_name})
+#   redirect "/bands/#{band_id}"
+# end
 
 patch('/bands/:id') do
   band_name = params["band_name"]
@@ -42,11 +51,11 @@ end
 
 #----------
 
-post('/bands/:id') do
-  venue = Venue.find(params["id"].to_i)
-  band_id = band.id()
-  venue_name = params["venue_name"]
-  venue = Venue.create({ venue_name: venue_name })
-  band.update({ venue_ids: [venue.id()] })
-  redirect "/bands/#{band_id}"
-end
+# post('/bands/:id') do
+#   venue = Venue.find(params["id"].to_i)
+#   band_id = band.id()
+#   venue_name = params["venue_name"]
+#   venue = Venue.create({ venue_name: venue_name })
+#   band.update({ venue_ids: [venue.id()] })
+#   redirect "/bands/#{band_id}"
+# end
