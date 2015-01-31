@@ -1,4 +1,30 @@
-<h3>Update "<%= @band.band_name() %>"</h3>
+<h1>Update <%= @band.band_name() %></h1>
+
+<hr>
+
+<h2>Which venues has this band played?</h2>
+
+<ul>
+  <% if @venues.any? %>
+    <% @venues.each do |venue| %>
+      <li>
+        <%= venue.venue_name() %>
+      </li>
+    <% end %>
+  <% else %>
+  <p>No venues have been added.</p>
+  <% end %>
+</ul>
+
+
+<h4>Add a venue here:</h4>
+
+<form action="/bands/:id" method="post">
+  <label for="venue_name"></label>
+  <input id="venue_name" name="venue_name" type="text" class="form-line" value="" placeholder="ex. The Rabbit Hole">
+
+  <button type="submit">Add Venue</button>
+</form>
 
 <hr>
 
