@@ -1,29 +1,31 @@
-require("bundler/setup")
-Bundler.require(:default)
+require 'bundler/setup'
+Bundler.require :default
+set :bind, '0.0.0.0'
+set :port, 4000
 
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each{ |file| require file }
 
-get('/') do
+get '/' do
   @bands = Band.all
-  erb(:index)
+  erb :index
 end
 
-post('/') do
-  band_name = params["band_name"]
+post '/' do
+  band_name = params['band_name']
   band = Band.create({ band_name: band_name })
   redirect '/'
 end
 
-get('/bands/:id') do
-  @band = Band.find(params["id"].to_i)
+get '/bands/:id' do
+  @band = Band.find(params['id'].to_i)
   @venues = @band.venues
-  erb(:bands)
+  erb :bands
 end
 
-post('/bands/:id') do
-  band = Band.find(params["id"].to_i)
+post '/bands/:id' do
+  band = Band.find(params['id'.to_i)
   band_id = band.id()
-  venue_name = params["venue_name"]
+  venue_name = params['venue_name']
   venue = Venue.create({ venue_name: venue_name })
   band.update({ venue_ids: [venue.id()]})
   redirect "/bands/#{band_id}"
@@ -35,16 +37,16 @@ end
 #   redirect "/bands/#{band_id}"
 # end
 
-patch('/bands/:id') do
-  band_name = params["band_name"]
-  @band = Band.find(params["id"].to_i)
+patch '/bands/:id' do
+  band_name = params['band_name']
+  @band = Band.find(params['id'].to_i)
   @band.update({ band_name: band_name})
   band_id = @band.id()
   redirect "/bands/#{band_id}"
 end
 
-delete('/bands/:id?') do
-  @band = Band.find(params["id"])
+delete '/bands/:id?' do
+  @band = Band.find(params['id'])
   @band.destroy()
   redirect '/'
 end
